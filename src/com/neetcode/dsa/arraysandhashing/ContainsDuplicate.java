@@ -3,13 +3,12 @@ package com.neetcode.dsa.arraysandhashing;
 import java.util.*;
 
 public class ContainsDuplicate {
-    public boolean containsDuplicate(int[] nums) {
-
+    public void containsDuplicate(int[] nums) {
         long count = Arrays.stream(nums).distinct().count();
         if(count == nums.length){
-            return false;
+            System.out.println("No duplicates in a given array");
         }else{
-            return true;
+            System.out.println("Contains duplicate");
         }
     }
 }
