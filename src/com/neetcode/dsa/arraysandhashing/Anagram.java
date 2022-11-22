@@ -5,7 +5,29 @@ import java.util.Locale;
 import java.util.Map;
 
 public class Anagram {
+    public static void main(String[] args) {
+        // 2. Is Anagram
+        Anagram anagram = new Anagram();
+        //anagram.isAnagram("a gentleman","elegant man");
+        System.out.println(anagram.isAnagram("anagram", "nagaram"));
+    }
 
+    public boolean isAnagram(String s, String t) {
+        if(s.length() != t.length())return false;
+
+        int[] arr = new int[26];
+        //small 'a' starts from 97 so in order to reduce the size of arr were reducing 97 so it can start from 0
+        for(int i = 0; i< s.length(); i++){
+            arr[s.charAt(i) - 97]++;
+            arr[t.charAt(i) - 97]--;
+        }
+        for(int n : arr){
+            if(n != 0)return false;
+        }
+        return true;
+    }
+
+    /* brute force
     public void isAnagram(String s, String t) {
 
         // removing the space's between the words
@@ -57,5 +79,6 @@ public class Anagram {
         }else
             System.out.println("Its not an anagram");
 
-    }
+    }*/
+
 }
