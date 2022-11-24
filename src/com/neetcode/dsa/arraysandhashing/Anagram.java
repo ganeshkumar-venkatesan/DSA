@@ -1,5 +1,6 @@
 package com.neetcode.dsa.arraysandhashing;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -12,6 +13,7 @@ public class Anagram {
         System.out.println(anagram.isAnagram("anagram", "nagaram"));
     }
 
+    /*
     public boolean isAnagram(String s, String t) {
         if(s.length() != t.length())return false;
 
@@ -25,8 +27,19 @@ public class Anagram {
             if(n != 0)return false;
         }
         return true;
-    }
+    }*/
 
+    public boolean isAnagram(String s, String t) {
+        if(s.length() != t.length())return false;
+        char[] arrOne = s.toCharArray();
+        char[] arrTwo = t.toCharArray();
+        Arrays.sort(arrOne);
+        Arrays.sort(arrTwo);
+        if(Arrays.equals(arrOne,arrTwo))
+            return true;
+        else
+            return false;
+    }
     /* brute force
     public void isAnagram(String s, String t) {
 
