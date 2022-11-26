@@ -10,27 +10,18 @@ public class TopKFrequentElements {
     }
 
     public int[] topKFrequent(int[] nums, int k) {
-        Map<Integer,List<Integer>> groupNum = new HashMap<>();
-
+        Map<Integer,Integer> groupNum = new HashMap<>();
         for(int a : nums){
-            groupNum.put(a,groupNum.getOrDefault(a,new ArrayList<>()));
-            groupNum.get(a).add(a);
+            groupNum.put(a,groupNum.getOrDefault(a,0) +1 );
         }
-        Comparator<Map<Integer,List<Integer>>> com = (o1, o2) -> o1.values().size()> o2.values().size() ? 1 : -1;
-        Queue<Map<Integer,List<Integer>>> obj = new PriorityQueue<>(com);
-        for (Map.Entry<Integer,List<Integer>> a : groupNum.entrySet()) {
-            Map<Integer, List<Integer>> gg = new HashMap<>();
-            gg.put(a.getKey(), a.getValue());
-            obj.add(gg);
-        }
+        Queue<Map.Entry<Integer,Integer>> obj = new PriorityQueue<>((a,b)-> a.getValue() > b.getValue() ? -1:1);
+        obj.addAll(groupNum.entrySet());
+
         int[] result = new int[k];
         for (int i =0; i<k; i++){
-            Map<Integer, List<Integer>> objj = obj.poll();
-            //objj.getV
-           // result[i] = objj
+            result[i] = obj.poll().getKey();
         }
-        //Collections.sort(groupNum,com);
-        return null;
+        return result;
         /*
         Map<Integer, Integer> map = new HashMap<>();
         for(int n: nums){
