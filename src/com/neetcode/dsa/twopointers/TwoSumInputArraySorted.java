@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class TwoSumInputArraySorted {
     public static void main(String[] args) {
         TwoSumInputArraySorted twoSumInputArraySorted = new TwoSumInputArraySorted();
-        System.out.println(Arrays.toString(twoSumInputArraySorted.twoSum(new int[]{-1,0},-1)));
+        System.out.println(Arrays.toString(twoSumInputArraySorted.twoSum(new int[]{2,7,11,15},9)));
     }
 
     public int[] twoSum(int[] numbers, int target) {
@@ -16,7 +16,7 @@ public class TwoSumInputArraySorted {
             while (numbers[i]+numbers[j] > target) {
                 j--;
             }
-            while (numbers[i]+numbers[j]<target){
+            while (numbers[i]+numbers[j] < target){
                 i++;
             }
         }
